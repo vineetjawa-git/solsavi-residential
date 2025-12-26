@@ -1,4 +1,5 @@
-import { Sun, Phone, Mail, MapPin } from "lucide-react";
+import { Phone, Mail, MapPin } from "lucide-react";
+import SolsaviLogo from "@/components/SolsaviLogo";
 
 const Footer = () => {
   return (
@@ -7,13 +8,8 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="/" className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-accent flex items-center justify-center">
-                <Sun className="w-6 h-6 text-accent-foreground" />
-              </div>
-              <span className="text-xl font-bold">
-                Sol<span className="text-accent">Savi</span>
-              </span>
+            <a href="/" className="flex items-center mb-4">
+              <SolsaviLogo />
             </a>
             <p className="text-background/70 mb-6 max-w-md">
               India's trusted solar marketplace connecting homeowners and businesses 
