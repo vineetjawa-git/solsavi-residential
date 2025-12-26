@@ -23,13 +23,8 @@ const HeroSection = () => {
             </div>
 
             {/* Headline */}
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
-              Get a{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10">Rooftop Solar</span>
-                <span className="absolute bottom-2 left-0 right-0 h-3 bg-solar-orange/40 -z-0" />
-              </span>{" "}
-              Panel
+            <h1 className="text-3xl md:text-4xl lg:text-[45px] font-extrabold leading-tight">
+              Get a Rooftop Solar Panel
             </h1>
 
             {/* Subsidy highlight */}
