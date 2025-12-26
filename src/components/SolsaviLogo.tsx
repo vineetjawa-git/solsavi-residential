@@ -1,3 +1,5 @@
+import solsaviLogo from "@/assets/solsavi-logo.png";
+
 interface SolsaviLogoProps {
   className?: string;
   showTagline?: boolean;
@@ -5,28 +7,11 @@ interface SolsaviLogoProps {
 
 const SolsaviLogo = ({ className = "", showTagline = true }: SolsaviLogoProps) => {
   return (
-    <div className={`flex flex-col ${className}`}>
-      <div className="flex items-baseline">
-        <span 
-          className="text-2xl md:text-3xl tracking-tight"
-          style={{ 
-            fontFamily: "'Plus Jakarta Sans', system-ui, sans-serif",
-            fontWeight: 400 
-          }}
-        >
-          <span style={{ color: '#4A5568' }}>Sol</span>
-          <span style={{ color: '#EA9134' }}>savi</span>
-        </span>
-      </div>
-      {showTagline && (
-        <span 
-          className="text-[10px] tracking-wide"
-          style={{ color: '#718096' }}
-        >
-          Your rooftop solar guide
-        </span>
-      )}
-    </div>
+    <img 
+      src={solsaviLogo} 
+      alt="Solsavi - Your rooftop solar guide" 
+      className={`h-10 md:h-12 w-auto ${className}`}
+    />
   );
 };
 
