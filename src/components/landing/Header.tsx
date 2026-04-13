@@ -31,7 +31,7 @@ const Header = () => {
             <Button 
               className="bg-gradient-accent hover:opacity-90 text-accent-foreground shadow-accent transition-all duration-300"
             >
-              Get Free Quote
+              Get a Free Quote
             </Button>
           </div>
         </div>
