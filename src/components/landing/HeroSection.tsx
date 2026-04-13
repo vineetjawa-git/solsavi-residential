@@ -72,11 +72,6 @@ const HeroSection = () => {
                 <p className="text-3xl md:text-4xl font-bold">10,000+</p>
                 <p className="text-sm text-primary-foreground/70">Happy Customers</p>
               </div>
-              <div className="w-px h-12 bg-primary-foreground/20" />
-              <div>
-                <p className="text-3xl md:text-4xl font-bold">50MW+</p>
-                <p className="text-sm text-primary-foreground/70">Installed Capacity</p>
-              </div>
             </div>
           </div>
 
