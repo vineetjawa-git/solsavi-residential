@@ -2,13 +2,6 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle2, Sparkles } from "lucide-react";
 
@@ -19,7 +12,6 @@ const LeadForm = () => {
     name: "",
     phone: "",
     pincode: "",
-    category: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -38,10 +30,6 @@ const LeadForm = () => {
       toast({ title: "Please enter a valid 6-digit pincode", variant: "destructive" });
       return;
     }
-    if (!formData.category) {
-      toast({ title: "Please select a category", variant: "destructive" });
-      return;
-    }
 
     setIsSubmitting(true);
     
@@ -53,7 +41,7 @@ const LeadForm = () => {
       description: "Our solar expert will contact you within 24 hours.",
     });
     
-    setFormData({ name: "", phone: "", pincode: "", category: "" });
+    setFormData({ name: "", phone: "", pincode: "" });
     setIsSubmitting(false);
   };
 
@@ -111,22 +99,6 @@ const LeadForm = () => {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="category" className="text-foreground">Category</Label>
-            <Select
-              value={formData.category}
-              onValueChange={(value) => setFormData({ ...formData, category: value })}
-            >
-              <SelectTrigger className="h-12 bg-background border-border focus:border-primary focus:ring-primary">
-                <SelectValue placeholder="Select installation type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="residential">Residential</SelectItem>
-                <SelectItem value="commercial">Commercial</SelectItem>
-                <SelectItem value="industrial">Industrial</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
 
           <Button
             type="submit"
