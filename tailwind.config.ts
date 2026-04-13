@@ -107,7 +107,7 @@ export default {
         float: "float 3s ease-in-out infinite",
       },
       backgroundImage: {
-        "hero-pattern": "radial-gradient(ellipse at top, hsl(240 1% 31% / 0.15) 0%, transparent 50%)",
+        "hero-pattern": "radial-gradient(ellipse at top, hsl(214 91% 32% / 0.15) 0%, transparent 50%)",
       },
     },
   },

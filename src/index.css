@@ -11,26 +11,26 @@
 
 @layer base {
   :root {
-    /* #4d4d4f → dark charcoal */
-    --background: 200 14% 96%; /* #e4f2f5 inspired light bg */
-    --foreground: 240 1% 31%; /* #4d4d4f */
+    /* #08459b → deep blue */
+    --background: 200 14% 96%;
+    --foreground: 214 91% 32%; /* #08459b */
 
     --card: 0 0% 100%;
-    --card-foreground: 240 1% 31%;
+    --card-foreground: 214 91% 32%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 240 1% 31%;
+    --popover-foreground: 214 91% 32%;
 
-    /* Primary: charcoal #4d4d4f */
-    --primary: 240 1% 31%;
+    /* Primary: deep blue #08459b */
+    --primary: 214 91% 32%;
     --primary-foreground: 0 0% 100%;
 
     /* Secondary: light cyan #e4f2f5 */
     --secondary: 193 47% 93%;
-    --secondary-foreground: 240 1% 31%;
+    --secondary-foreground: 214 91% 32%;
 
-    --muted: 0 0% 80%; /* #CCCCCC */
-    --muted-foreground: 240 1% 45%;
+    --muted: 0 0% 80%;
+    --muted-foreground: 214 91% 45%;
 
     /* Accent: orange #e99031 */
     --accent: 30 79% 55%;
@@ -48,29 +48,29 @@
     /* Custom solar colors */
     --solar-blue: 193 47% 93%; /* #e4f2f5 */
     --solar-blue-light: 193 47% 96%;
-    --solar-blue-dark: 240 1% 31%; /* #4d4d4f */
+    --solar-blue-dark: 214 91% 32%; /* #08459b */
     --solar-orange: 30 79% 55%; /* #e99031 */
     --solar-orange-light: 27 90% 62%; /* #fbefe3 warm */
     --solar-green: 142 70% 45%;
     --solar-yellow: 30 79% 55%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(240 1% 31%) 0%, hsl(240 1% 42%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(214 91% 32%) 0%, hsl(214 70% 42%) 100%);
     --gradient-accent: linear-gradient(135deg, hsl(30 79% 55%) 0%, hsl(27 90% 62%) 100%);
     --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(193 47% 96%) 100%);
 
     /* Shadows */
-    --shadow-sm: 0 2px 8px -2px hsl(240 1% 31% / 0.08);
-    --shadow-md: 0 8px 24px -4px hsl(240 1% 31% / 0.12);
-    --shadow-lg: 0 16px 48px -8px hsl(240 1% 31% / 0.15);
+    --shadow-sm: 0 2px 8px -2px hsl(214 91% 32% / 0.08);
+    --shadow-md: 0 8px 24px -4px hsl(214 91% 32% / 0.12);
+    --shadow-lg: 0 16px 48px -8px hsl(214 91% 32% / 0.15);
     --shadow-accent: 0 8px 24px -4px hsl(30 79% 55% / 0.35);
 
     --sidebar-background: 0 0% 98%;
-    --sidebar-foreground: 240 1% 31%;
-    --sidebar-primary: 240 1% 31%;
+    --sidebar-foreground: 214 91% 32%;
+    --sidebar-primary: 214 91% 32%;
     --sidebar-primary-foreground: 0 0% 98%;
     --sidebar-accent: 193 47% 93%;
-    --sidebar-accent-foreground: 240 1% 31%;
+    --sidebar-accent-foreground: 214 91% 32%;
     --sidebar-border: 0 0% 85%;
     --sidebar-ring: 30 79% 55%;
   }
