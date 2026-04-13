@@ -65,12 +65,12 @@ const HeroSection = () => {
             <div className="flex items-center gap-8 pt-4">
               <div>
                 <p className="text-3xl md:text-4xl font-bold">500+</p>
-                <p className="text-sm text-primary-foreground/70">Verified Installers</p>
+                <p className="text-sm text-primary-foreground/70">Verified Installers across all India</p>
               </div>
               <div className="w-px h-12 bg-primary-foreground/20" />
               <div>
-                <p className="text-3xl md:text-4xl font-bold">10,000+</p>
-                <p className="text-sm text-primary-foreground/70">Happy Customers</p>
+                <p className="text-3xl md:text-4xl font-bold">Expert Consultation</p>
+                <p className="text-sm text-primary-foreground/70">Free site-visit and rooftop feasibility for your quote</p>
               </div>
             </div>
           </div>
