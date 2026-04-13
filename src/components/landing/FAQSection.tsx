@@ -24,7 +24,7 @@ const faqs = [
   },
   {
     question: "Is financing available for solar installation?",
-    answer: "Yes! We partner with leading banks and NBFCs to offer attractive financing options. You can avail solar loans with interest rates starting from 9% per annum, with EMI options from 12 to 60 months. Many banks offer special solar loans with quick approval.",
+    answer: "Yes! Many banks and NBFCs provide attractive financing options for rooftop solar panel installations. ",
   },
   {
     question: "What maintenance is required for solar panels?",
