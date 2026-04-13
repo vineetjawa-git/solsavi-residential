@@ -10,7 +10,7 @@ import {
 const benefits = [
   {
     icon: IndianRupee,
-    title: "₹78,000 Government Subsidy",
+    title: "₹78,000 Subsidy",
     description: "Get a subsidy under PM Surya Ghar Yojana for residential systems",
     highlight: true,
   },
