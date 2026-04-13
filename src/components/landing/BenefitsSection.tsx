@@ -27,7 +27,7 @@ const benefits = [
   {
     icon: Banknote,
     title: "Easy Financing",
-    description: "Flexible EMI options and bank tie-ups for hassle-free payments",
+    description: "Flexible EMI options for hassle-free payments for eligible customers",
   },
   {
     icon: Clock,
