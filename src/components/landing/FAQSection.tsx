@@ -28,7 +28,7 @@ const faqs = [
   },
   {
     question: "What maintenance is required for solar panels?",
-    answer: "Solar panels require minimal maintenance. Basic cleaning with water once every 2-4 weeks is usually sufficient. The panels come with 25-year performance warranty, and inverters typically have 5-10 year warranties. Annual inspection by professionals is recommended.",
+    answer: "Solar panels require minimal maintenance. Basic cleaning with water is usually sufficient. Please discuss the warranty and maintenance details with your installer when you get a quote.",
   },
 ];
 
