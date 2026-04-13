@@ -11,7 +11,7 @@ const benefits = [
   {
     icon: IndianRupee,
     title: "₹78,000 Government Subsidy",
-    description: "Avail maximum subsidy under PM Surya Ghar Yojana for 3KW residential systems",
+    description: "Get a subsidy under PM Surya Ghar Yojana for residential systems",
     highlight: true,
   },
   {
