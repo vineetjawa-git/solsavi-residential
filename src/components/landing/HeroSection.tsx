@@ -41,7 +41,7 @@ const HeroSection = () => {
                 </div>
               </div>
               <p className="text-primary-foreground/70 text-sm">
-                For 3KW residential rooftop solar installation under government scheme
+                *For 3KW residential rooftop solar installation under government scheme
               </p>
             </div>
 
