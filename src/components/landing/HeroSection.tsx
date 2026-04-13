@@ -81,10 +81,6 @@ const HeroSection = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-primary-foreground/50">
-          <span className="text-xs uppercase tracking-widest">Scroll to explore</span>
-          <ArrowRight className="w-4 h-4 rotate-90 animate-bounce" />
         </div>
       </div>
     </section>
