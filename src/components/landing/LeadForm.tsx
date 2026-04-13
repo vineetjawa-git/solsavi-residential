@@ -111,22 +111,6 @@ const LeadForm = () => {
             />
           </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="category" className="text-foreground">Category</Label>
-            <Select
-              value={formData.category}
-              onValueChange={(value) => setFormData({ ...formData, category: value })}
-            >
-              <SelectTrigger className="h-12 bg-background border-border focus:border-primary focus:ring-primary">
-                <SelectValue placeholder="Select installation type" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="residential">Residential</SelectItem>
-                <SelectItem value="commercial">Commercial</SelectItem>
-                <SelectItem value="industrial">Industrial</SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
 
           <Button
             type="submit"
