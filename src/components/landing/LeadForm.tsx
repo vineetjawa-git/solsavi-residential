@@ -70,10 +70,10 @@ const LeadForm = () => {
         </div>
 
         <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
-          Get Your Free Solar Quote
+          Get a Free Quote from an Installer
         </h3>
         <p className="text-muted-foreground text-sm mb-6">
-          Connect with verified installers in your area
+          We will call you and then connect with verified installers in your area
         </p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
