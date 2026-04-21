@@ -26,7 +26,7 @@ const Header = () => {
               className="hidden md:flex items-center gap-2 text-[#25D366] hover:text-[#128C7E] transition-colors"
             >
               <WhatsAppIcon className="w-5 h-5" />
-              <span className="text-sm font-medium">+91 98765 43210</span>
+              <span className="text-sm font-medium">{"\n"}</span>
             </a>
             <Button 
               className="bg-gradient-accent hover:opacity-90 text-accent-foreground shadow-accent transition-all duration-300"
