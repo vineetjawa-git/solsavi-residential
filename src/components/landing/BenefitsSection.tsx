@@ -16,7 +16,7 @@ const benefits = [
   },
   {
     icon: Zap,
-    title: "90% Electricity Savings",
+    title: "Up to 90% Electricity Savings",
     description: "Drastically reduce your monthly electricity bills with solar power",
   },
   {
