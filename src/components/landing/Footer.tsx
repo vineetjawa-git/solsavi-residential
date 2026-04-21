@@ -35,11 +35,10 @@ const Footer = () => {
           <div>
             <h4 className="text-lg font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-3 text-background/70">
-              <li><a href="#" className="hover:text-accent transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">How It Works</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Subsidy Guide</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Solar Calculator</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Partner With Us</a></li>
+              <li><a href="https://solsavi.in/about-solsavi/" className="hover:text-accent transition-colors">About Us</a></li>
+              <li><a href="https://solsavi.in/faqs/" className="hover:text-accent transition-colors">FAQs</a></li>
+              <li><a href="https://calculator.solsavi.in/#/dashboard" className="hover:text-accent transition-colors">Solar Calculator</a></li>
+              <li><a href="https://solsavi.in/as-a-partner/" className="hover:text-accent transition-colors">Partner With Us</a></li>
             </ul>
           </div>
 
