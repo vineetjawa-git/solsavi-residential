@@ -49,15 +49,15 @@ const Footer = () => {
             <ul className="space-y-4 text-background/70">
               <li className="flex items-start gap-3">
                 <Phone className="w-5 h-5 shrink-0 mt-0.5" />
-                <span>+91 98765 43210</span>
+                <span>+91 (0413) 2622571</span>
               </li>
               <li className="flex items-start gap-3">
                 <Mail className="w-5 h-5 shrink-0 mt-0.5" />
-                <span>hello@solsavi.in</span>
+                <span>info@aurovilleconsulting.com</span>
               </li>
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 shrink-0 mt-0.5" />
-                <span>Mumbai, Maharashtra, India</span>
+                <span>Auroville Consulting. Kalpana, Crown Road, Auroville, TN-605101, India</span>
               </li>
             </ul>
           </div>
@@ -65,11 +65,11 @@ const Footer = () => {
 
         {/* Bottom bar */}
         <div className="border-t border-background/10 pt-8 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-background/50">
-          <p>© 2024 SolSavi. All rights reserved.</p>
+          <p>© Solsavi | A Project of Auroville Consulting. All rights reserved </p>
           <div className="flex gap-6">
             <a href="#" className="hover:text-accent transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-accent transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-accent transition-colors">Cookie Policy</a>
+            <a href="#" className="hover:text-accent transition-colors">{"\n"}</a>
+            <a href="#" className="hover:text-accent transition-colors">{"\n"}</a>
           </div>
         </div>
       </div>
