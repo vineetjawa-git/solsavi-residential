@@ -20,6 +20,10 @@ const Header = () => {
           {/* CTA */}
           <div className="flex items-center gap-4">
             <Button 
+              onClick={() => {
+                const el = document.getElementById("lead-form");
+                el?.scrollIntoView({ behavior: "smooth", block: "center" });
+              }}
               className="bg-gradient-accent hover:opacity-90 text-accent-foreground shadow-accent transition-all duration-300"
             >
               Get a Free Quote
