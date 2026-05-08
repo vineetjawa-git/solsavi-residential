@@ -18,7 +18,7 @@ const HeroSection = () => {
           <div className="text-primary-foreground space-y-6 md:space-y-8">
             {/* Badge */}
             <div className="inline-flex items-center gap-2 bg-primary-foreground/10 backdrop-blur-sm border border-primary-foreground/20 px-4 py-2 rounded-full">
-              <Sun className="w-5 h-5 text-solar-yellow" />
+              <Sun className="w-5 h-5 text-accent" fill="currentColor" />
               <span className="text-sm font-medium">India's Trusted Solar Marketplace</span>
             </div>
 
