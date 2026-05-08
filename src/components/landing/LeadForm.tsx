@@ -82,7 +82,7 @@ const LeadForm = () => {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="phone" className="text-foreground">Phone Number</Label>
+            <Label htmlFor="phone" className="text-foreground">Whatsapp Phone Number</Label>
             <Input
               id="phone"
               type="tel"
