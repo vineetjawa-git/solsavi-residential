@@ -27,6 +27,10 @@ const faqs = [
     answer: "Yes! Many banks and NBFCs provide attractive financing options for rooftop solar panel installations. ",
   },
   {
+    question: "What subsidy is available for RWAs and Group Housing Societies under the PM-Surya Ghar: Muft Bijli Yojana?",
+    answer: "The PM-Surya Ghar Muft Bijli Yojana offers a subsidy of ₹18,000 per kW for solar installations up to 500 kW for Resident Welfare Associations (RWAs) and Group Housing Societies (GHS). This applies to common facilities such as elevators, water pumps, and EV charging infrastructure. To qualify, the entity must be registered, use Domestic Content Requirement (DCR) compliant solar panels, and submit the application through the official National Portal.",
+  },
+  {
     question: "What maintenance is required for solar panels?",
     answer: "Solar panels require minimal maintenance. Basic cleaning with water is usually sufficient. Please discuss the warranty and maintenance details with your installer when you get a quote.",
   },
