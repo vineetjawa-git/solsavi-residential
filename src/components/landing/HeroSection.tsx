@@ -76,7 +76,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right - Form */}
-          <div className="lg:pl-8 animate-slide-in-right" style={{ animationDelay: "0.3s" }}>
+          <div id="lead-form" className="lg:pl-8 animate-slide-in-right scroll-mt-24" style={{ animationDelay: "0.3s" }}>
           <LeadForm />
           </div>
         </div>
