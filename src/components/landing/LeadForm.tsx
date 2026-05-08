@@ -12,6 +12,7 @@ const LeadForm = () => {
     name: "",
     phone: "",
     pincode: "",
+    monthlyBill: "",
   });
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -30,6 +31,10 @@ const LeadForm = () => {
       toast({ title: "Please enter a valid 6-digit pincode", variant: "destructive" });
       return;
     }
+    if (!formData.monthlyBill.trim()) {
+      toast({ title: "Please enter your monthly electricity bill", variant: "destructive" });
+      return;
+    }
 
     setIsSubmitting(true);
     
@@ -41,7 +46,7 @@ const LeadForm = () => {
       description: "Our solar expert will contact you within 24 hours.",
     });
     
-    setFormData({ name: "", phone: "", pincode: "" });
+    setFormData({ name: "", phone: "", pincode: "", monthlyBill: "" });
     setIsSubmitting(false);
   };
 
@@ -95,6 +100,18 @@ const LeadForm = () => {
               placeholder="6-digit pincode"
               value={formData.pincode}
               onChange={(e) => setFormData({ ...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6) })}
+              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="monthlyBill" className="text-foreground">Monthly Electricity Bill (in ₹)</Label>
+            <Input
+              id="monthlyBill"
+              type="text"
+              placeholder="e.g. 2500"
+              value={formData.monthlyBill}
+              onChange={(e) => setFormData({ ...formData, monthlyBill: e.target.value })}
               className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
             />
           </div>
