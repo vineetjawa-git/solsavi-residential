@@ -1,5 +1,5 @@
 import { Phone, Mail, MapPin } from "lucide-react";
-import SolsaviLogo from "@/components/SolsaviLogo";
+import solsaviLogoWhite from "@/assets/solsavi-logo-white.png";
 
 const Footer = () => {
   return (
@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <a href="/" className="flex items-center mb-4">
-              <SolsaviLogo />
+              <img src={solsaviLogoWhite} alt="Solsavi - Your rooftop solar guide" className="h-10 md:h-12 w-auto" />
             </a>
             <p className="text-background/70 mb-6 max-w-md">
               India's trusted solar marketplace connecting homeowners and businesses 
