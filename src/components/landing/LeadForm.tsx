@@ -14,11 +14,13 @@ const LeadForm = () => {
     name: "",
     phone: "",
     pincode: "",
+    monthlyBill: "",
+
   });
 
   const GOOGLE_APPS_SCRIPT_URL =
     import.meta.env.VITE_GOOGLE_APPS_SCRIPT_URL ||
-    "https://script.google.com/macros/s/AKfycbyzMYQwUgIJZ4NLQjurv_N1RGwwWymDMLAyWHis34RWxd3Gdbvx2JOZwlwHq31hRa0f/exec";
+    "https://script.google.com/macros/s/AKfycbxU0ZkypgEAnAHslPFksA9Gb9dxAcZQgZtyyCr7CyS6yloCL4TGaCwQj06kNLce1ld7/exec";
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -47,6 +49,11 @@ const LeadForm = () => {
       });
       return;
     }
+        if (!formData.monthlyBill.trim()) {
+      toast({ title: "Please enter your monthly electricity bill", variant: "destructive" });
+      return;
+    }
+
 
     setIsSubmitting(true);
 
@@ -88,6 +95,7 @@ const LeadForm = () => {
         name: "",
         phone: "",
         pincode: "",
+        monthlyBill: "",
       });
     } catch (error) {
       console.error("Submission Error:", error);
@@ -124,74 +132,59 @@ const LeadForm = () => {
           your area.
         </p>
 
-        {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Name */}
+        <form onSubmit={handleSubmit} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="name">Full Name</Label>
-
+            <Label htmlFor="name" className="text-foreground">Full Name</Label>
             <Input
               id="name"
-              type="text"
               placeholder="Enter your full name"
               value={formData.name}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  name: e.target.value,
-                })
-              }
-              className="h-12"
+              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
             />
           </div>
 
-          {/* Phone */}
           <div className="space-y-2">
-            <Label htmlFor="phone">Phone Number</Label>
-
+            <Label htmlFor="phone" className="text-foreground">Whatsapp Phone Number</Label>
             <Input
               id="phone"
               type="tel"
               placeholder="10-digit mobile number"
               value={formData.phone}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  phone: e.target.value
-                    .replace(/\D/g, "")
-                    .slice(0, 10),
-                })
-              }
-              className="h-12"
+              onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
             />
           </div>
 
-          {/* Pincode */}
           <div className="space-y-2">
-            <Label htmlFor="pincode">Pin Code</Label>
-
+            <Label htmlFor="pincode" className="text-foreground">Pin Code</Label>
             <Input
               id="pincode"
-              type="text"
               placeholder="6-digit pincode"
               value={formData.pincode}
-              onChange={(e) =>
-                setFormData({
-                  ...formData,
-                  pincode: e.target.value
-                    .replace(/\D/g, "")
-                    .slice(0, 6),
-                })
-              }
-              className="h-12"
+              onChange={(e) => setFormData({ ...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6) })}
+              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
             />
           </div>
+
+          <div className="space-y-2">
+            <Label htmlFor="monthlyBill" className="text-foreground">Monthly Electricity Bill (in ₹)</Label>
+            <Input
+              id="monthlyBill"
+              type="text"
+              placeholder="e.g. 2500"
+              value={formData.monthlyBill}
+              onChange={(e) => setFormData({ ...formData, monthlyBill: e.target.value })}
+              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
+            />
+          </div>
+
 
           {/* Submit Button */}
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="w-full h-14 text-lg font-semibold bg-gradient-to-r from-green-500 to-lime-500 hover:opacity-90 transition-all duration-300"
+            className="w-full h-14 text-lg font-semibold bg-gradient-accent hover:opacity-90 text-accent-foreground shadow-accent transition-all duration-300"
           >
             {isSubmitting ? (
               <>
