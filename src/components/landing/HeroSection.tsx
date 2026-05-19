@@ -70,7 +70,7 @@ const HeroSection = () => {
               <div className="w-px h-12 bg-primary-foreground/20" />
               <div>
                 <p className="text-3xl md:text-4xl font-bold">Expert Consultation</p>
-                <p className="text-sm text-primary-foreground/70">Free site-visit and rooftop feasibility for your quote</p>
+                <p className="text-sm text-primary-foreground/70">Get a free site-visit and rooftop feasibility for your quote</p>
               </div>
             </div>
           </div>
