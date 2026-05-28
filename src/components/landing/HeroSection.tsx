@@ -1,7 +1,29 @@
-import { Sun, Zap, Shield, ArrowRight } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { Sun, Zap, Shield, ArrowRight, ArrowUpCircle } from "lucide-react";
 import LeadForm from "./LeadForm";
 
 const HeroSection = () => {
+  const formRef = useRef<HTMLDivElement | null>(null);
+  const [showScrollUp, setShowScrollUp] = useState(false);
+
+  useEffect(() => {
+    if (!formRef.current) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setShowScrollUp(!entry.isIntersecting);
+      },
+      { root: null, threshold: 0.1 }
+    );
+
+    observer.observe(formRef.current);
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToForm = () => {
+    formRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
   return (
     <section className="relative min-h-screen pt-20 overflow-hidden">
       {/* Background */}
@@ -76,11 +98,22 @@ const HeroSection = () => {
           </div>
 
           {/* Right - Form */}
-          <div className="lg:pl-8 animate-slide-in-right" style={{ animationDelay: "0.3s" }}>
-          <LeadForm />
+          <div ref={formRef} className="lg:pl-8 animate-slide-in-right" style={{ animationDelay: "0.3s" }}>
+            <LeadForm />
           </div>
         </div>
       </div>
+
+      {showScrollUp && (
+        <button
+          type="button"
+          onClick={scrollToForm}
+          className="fixed bottom-6 right-6 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-xl transition hover:bg-primary/90 md:bottom-8 md:right-8"
+          aria-label="Scroll to form"
+        >
+          <ArrowUpCircle className="h-7 w-7" />
+        </button>
+      )}
     </section>
   );
 };
