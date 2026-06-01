@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <a href="/" className="inline-flex items-center mb-4 -ml-2">
+            <a href="https://solsavi.in/" className="inline-flex items-center mb-4 -ml-2">
               <img src={solsaviLogoWhite} alt="Solsavi - Your rooftop solar guide" className="h-12 md:h-14 w-auto block" />
             </a>
             <p className="text-background/70 mb-6 max-w-md">
