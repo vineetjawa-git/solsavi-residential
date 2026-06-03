@@ -89,52 +89,54 @@ const LeadForm = () => {
         throw new Error(result.message || "Submission failed");
       }
 
-      // STEP 2: Trigger Solsavi Solar Savings Calculator
-      try {
-        const calculatorUrl =
-          `https://backend.solsavi.in/runReport` +
-          `?q1=${encodeURIComponent(formData.phone)}` +
-          `&q2=5` +
-          `&q3=4` +
-          `&q4=4` +
-          `&q5=4` +
-          `&q6=5` +
-          `&q7=4` +
-          `&q8=3` +
-          `&q9=5` +
-          `&q10=${encodeURIComponent(formData.monthlyBill)}` +
-          `&q11=shift1` +
-          `&from=website` +
-          `&pincode_in=${encodeURIComponent(formData.pincode)}` +
-          `&consumer_type_in=Domestic`;
+      // Trigger Solsavi Solar Savings Calculator asynchronously so the user sees success sooner.
+      void (async () => {
+        try {
+          const calculatorUrl =
+            `https://backend.solsavi.in/runReport` +
+            `?q1=${encodeURIComponent(formData.phone)}` +
+            `&q2=5` +
+            `&q3=4` +
+            `&q4=4` +
+            `&q5=4` +
+            `&q6=5` +
+            `&q7=4` +
+            `&q8=3` +
+            `&q9=5` +
+            `&q10=${encodeURIComponent(formData.monthlyBill)}` +
+            `&q11=shift1` +
+            `&from=website` +
+            `&pincode_in=${encodeURIComponent(formData.pincode)}` +
+            `&consumer_type_in=Domestic`;
 
-        const calculatorResponse = await fetch(calculatorUrl);
+          const calculatorResponse = await fetch(calculatorUrl);
 
-        if (calculatorResponse.ok) {
-          const calculatorResult = await calculatorResponse.json();
-          console.log(
-            "Solar Calculator Triggered Successfully:",
-            calculatorResult
-          );
-        } else {
+          if (calculatorResponse.ok) {
+            const calculatorResult = await calculatorResponse.json();
+            console.log(
+              "Solar Calculator Triggered Successfully:",
+              calculatorResult
+            );
+          } else {
+            console.error(
+              "Solar Calculator API Error:",
+              calculatorResponse.status
+            );
+          }
+        } catch (calculatorError) {
           console.error(
-            "Solar Calculator API Error:",
-            calculatorResponse.status
+            "Solar Calculator Trigger Failed:",
+            calculatorError
           );
-        }
-      } catch (calculatorError) {
-        console.error(
-          "Solar Calculator Trigger Failed:",
-          calculatorError
-        );
 
-        // Don't fail lead submission if calculator fails
-      }
+          // Don't fail lead submission if calculator fails
+        }
+      })();
 
       // Success Message
       toast({
         title: "🎉 Request Submitted Successfully!",
-        description: "Our solar expert will contact you within 24 hours.",
+        description: "Our solar expert will contact you within 24 hours. Check your WhatsApp! You'll find your detailed results there.",
       });
 
       // Reset Form
@@ -180,73 +182,96 @@ const LeadForm = () => {
           your area.
         </p>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <div className="space-y-2">
-            <Label htmlFor="name" className="text-foreground">Full Name</Label>
-            <Input
-              id="name"
-              placeholder="Enter your full name"
-              value={formData.name}
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
-            />
-          </div>
+        <div className="relative">
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="name" className="text-foreground">Full Name</Label>
+              <Input
+                id="name"
+                placeholder="Enter your full name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="phone" className="text-foreground">Whatsapp Phone Number</Label>
-            <Input
-              id="phone"
-              type="tel"
-              placeholder="10-digit mobile number"
-              value={formData.phone}
-              onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
-              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="phone" className="text-foreground">Whatsapp Phone Number</Label>
+              <Input
+                id="phone"
+                type="tel"
+                placeholder="10-digit mobile number"
+                value={formData.phone}
+                onChange={(e) => setFormData({ ...formData, phone: e.target.value.replace(/\D/g, '').slice(0, 10) })}
+                className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="pincode" className="text-foreground">Pin Code</Label>
-            <Input
-              id="pincode"
-              placeholder="6-digit pincode"
-              value={formData.pincode}
-              onChange={(e) => setFormData({ ...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6) })}
-              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="pincode" className="text-foreground">Pin Code</Label>
+              <Input
+                id="pincode"
+                placeholder="6-digit pincode"
+                value={formData.pincode}
+                onChange={(e) => setFormData({ ...formData, pincode: e.target.value.replace(/\D/g, '').slice(0, 6) })}
+                className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
+              />
+            </div>
 
-          <div className="space-y-2">
-            <Label htmlFor="monthlyBill" className="text-foreground">Monthly Electricity Bill (in ₹)</Label>
-            <Input
-              id="monthlyBill"
-              type="text"
-              placeholder="e.g. 2500"
-              value={formData.monthlyBill}
-              onChange={(e) => setFormData({ ...formData, monthlyBill: e.target.value })}
-              className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
-            />
-          </div>
+            <div className="space-y-2">
+              <Label htmlFor="monthlyBill" className="text-foreground">Monthly Electricity Bill (in ₹)</Label>
+              <Input
+                id="monthlyBill"
+                type="text"
+                placeholder="e.g. 2500"
+                value={formData.monthlyBill}
+                onChange={(e) => setFormData({ ...formData, monthlyBill: e.target.value })}
+                className="h-12 bg-background border-border focus:border-primary focus:ring-primary"
+              />
+            </div>
 
+            {/* Submit Button */}
+            <Button
+              type="submit"
+              disabled={isSubmitting}
+              className="w-full h-14 text-lg font-semibold bg-gradient-accent hover:opacity-90 text-accent-foreground shadow-accent transition-all duration-300"
+            >
+              {isSubmitting ? (
+                <>
+                  <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                  Submitting...
+                </>
+              ) : (
+                <>
+                  Get a Free Consultation
+                  <CheckCircle2 className="w-5 h-5 ml-2" />
+                </>
+              )}
+            </Button>
+          </form>
 
-          {/* Submit Button */}
-          <Button
-            type="submit"
-            disabled={isSubmitting}
-            className="w-full h-14 text-lg font-semibold bg-gradient-accent hover:opacity-90 text-accent-foreground shadow-accent transition-all duration-300"
-          >
-            {isSubmitting ? (
-              <>
-                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Submitting...
-              </>
-            ) : (
-              <>
-                Get a Free Consultation
-                <CheckCircle2 className="w-5 h-5 ml-2" />
-              </>
-            )}
-          </Button>
-        </form>
+          {isSubmitting && (
+            <div className="pointer-events-none absolute inset-0 z-20 flex items-center justify-center bg-black/10 backdrop-blur-sm rounded-3xl">
+              <div className="inline-flex items-center gap-4 rounded-full bg-card/95 px-6 py-4 shadow-xl border border-border animate-pulse">
+                <div className="relative flex h-12 w-12 items-center justify-center">
+                  <div className="absolute inset-0 rounded-full border-4 border-primary/20 border-t-primary animate-spin" />
+                  <div className="absolute inset-2 rounded-full border-4 border-primary/30 border-b-primary animate-spin" style={{ animationDuration: '1.2s' }} />
+                  <div className="relative flex h-4 w-4 items-center justify-center">
+                    <span className="inline-flex h-3 w-3 rounded-full bg-primary shadow-lg" />
+                  </div>
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-foreground">
+                    Submitting your request...
+                  </span>
+                  <span className="text-[11px] text-muted-foreground">
+                    Almost done — hang tight.
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
+        </div>
 
         {/* Trust Indicators */}
         <div className="mt-8 pt-5 border-t border-border">
