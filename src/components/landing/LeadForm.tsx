@@ -49,15 +49,19 @@ const LeadForm = () => {
       });
       return;
     }
-        if (!formData.monthlyBill.trim()) {
-      toast({ title: "Please enter your monthly electricity bill", variant: "destructive" });
+
+    if (!formData.monthlyBill.trim()) {
+      toast({
+        title: "Please enter your monthly electricity bill",
+        variant: "destructive",
+      });
       return;
     }
-
 
     setIsSubmitting(true);
 
     try {
+      // STEP 1: Save lead to Google Sheet (existing functionality)
       const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
         method: "POST",
         body: JSON.stringify(formData),
@@ -85,18 +89,62 @@ const LeadForm = () => {
         throw new Error(result.message || "Submission failed");
       }
 
+      // STEP 2: Trigger Solsavi Solar Savings Calculator
+      try {
+        const calculatorUrl =
+          `https://backend.solsavi.in/runReport` +
+          `?q1=${encodeURIComponent(formData.phone)}` +
+          `&q2=5` +
+          `&q3=4` +
+          `&q4=4` +
+          `&q5=4` +
+          `&q6=5` +
+          `&q7=4` +
+          `&q8=3` +
+          `&q9=5` +
+          `&q10=${encodeURIComponent(formData.monthlyBill)}` +
+          `&q11=shift1` +
+          `&from=website` +
+          `&pincode_in=${encodeURIComponent(formData.pincode)}` +
+          `&consumer_type_in=Domestic`;
+
+        const calculatorResponse = await fetch(calculatorUrl);
+
+        if (calculatorResponse.ok) {
+          const calculatorResult = await calculatorResponse.json();
+          console.log(
+            "Solar Calculator Triggered Successfully:",
+            calculatorResult
+          );
+        } else {
+          console.error(
+            "Solar Calculator API Error:",
+            calculatorResponse.status
+          );
+        }
+      } catch (calculatorError) {
+        console.error(
+          "Solar Calculator Trigger Failed:",
+          calculatorError
+        );
+
+        // Don't fail lead submission if calculator fails
+      }
+
+      // Success Message
       toast({
         title: "🎉 Request Submitted Successfully!",
-        description:
-          "Our solar expert will contact you within 24 hours.",
+        description: "Our solar expert will contact you within 24 hours.",
       });
 
+      // Reset Form
       setFormData({
         name: "",
         phone: "",
         pincode: "",
         monthlyBill: "",
       });
+
     } catch (error) {
       console.error("Submission Error:", error);
 
