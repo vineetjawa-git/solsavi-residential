@@ -32,9 +32,9 @@ const ThankYou = () => {
             <div className="bg-secondary/50 rounded-xl p-5 mb-8 flex items-center justify-center gap-3 text-foreground">
               <Phone className="w-5 h-5 text-accent" />
               <span className="text-sm md:text-base">
-                Need immediate help? Call us at{" "}
-                <a href="tel:+914132622571" className="font-semibold hover:text-accent transition-colors">
-                  +91 (0413) 2622571
+                Need immediate help? Call or whatsapp us at{" "}
+                <a href="tel:+918300883152" className="font-semibold hover:text-accent transition-colors">
+                  +91 8300883152
                 </a>
               </span>
             </div>
