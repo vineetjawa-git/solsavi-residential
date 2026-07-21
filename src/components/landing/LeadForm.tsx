@@ -6,6 +6,8 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import { CheckCircle2, Sparkles } from "lucide-react";
 
+const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL;
+
 const LeadForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -39,19 +41,63 @@ const LeadForm = () => {
       return;
     }
 
+    if (!APPS_SCRIPT_URL) {
+      toast({
+        title: "Form is not configured",
+        description: "Missing VITE_APPS_SCRIPT_URL environment variable.",
+        variant: "destructive",
+      });
+      return;
+    }
+
     setIsSubmitting(true);
-    
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    
-    toast({
-      title: "🎉 Request Submitted Successfully!",
-      description: "Our solar expert will contact you within 24 hours.",
-    });
-    
-    setFormData({ name: "", phone: "", pincode: "", monthlyBill: "" });
-    setIsSubmitting(false);
-    navigate("/thank-you");
+
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 15000);
+
+      const response = await fetch(APPS_SCRIPT_URL, {
+        method: "POST",
+        signal: controller.signal,
+        body: JSON.stringify({
+          name: formData.name.trim(),
+          phone: formData.phone,
+          pincode: formData.pincode,
+          monthlyBill: formData.monthlyBill.trim(),
+        }),
+      });
+      clearTimeout(timeoutId);
+
+      const result = (await response.json()) as {
+        success?: boolean;
+        message?: string;
+      };
+
+      if (!response.ok || !result?.success) {
+        throw new Error(result?.message || "Failed to submit form. Please try again.");
+      }
+
+      toast({
+        title: "🎉 Request Submitted Successfully!",
+        description: "Our solar expert will contact you within 24 hours.",
+      });
+
+      setFormData({ name: "", phone: "", pincode: "", monthlyBill: "" });
+      navigate("/thank-you");
+    } catch (error) {
+      toast({
+        title: "Submission failed",
+        description:
+          error instanceof Error && error.name === "AbortError"
+            ? "Request timed out. Please try again."
+            : error instanceof Error
+              ? error.message
+              : "Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
 
