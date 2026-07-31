@@ -8,6 +8,24 @@ import { CheckCircle2, Sparkles } from "lucide-react";
 
 const APPS_SCRIPT_URL = import.meta.env.VITE_APPS_SCRIPT_URL;
 
+// Looks up District & State for a 6-digit pincode using the public
+// postalpincode.in API. Returns empty strings if the lookup fails for
+// any reason (bad pincode, network issue, API down) so the form can
+// still submit without district/state rather than blocking the user.
+async function lookupDistrictAndState(pincode: string): Promise<{ district: string; state: string }> {
+  try {
+    const res = await fetch(`https://api.postalpincode.in/pincode/${pincode}`);
+    const data = await res.json();
+    const po = data?.[0]?.PostOffice?.[0];
+    if (data?.[0]?.Status === "Success" && po) {
+      return { district: po.District || "", state: po.State || "" };
+    }
+    return { district: "", state: "" };
+  } catch {
+    return { district: "", state: "" };
+  }
+}
+
 const LeadForm = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -53,6 +71,9 @@ const LeadForm = () => {
     setIsSubmitting(true);
 
     try {
+      // Resolve District & State from the pincode before submitting.
+      const { district, state } = await lookupDistrictAndState(formData.pincode);
+
       const controller = new AbortController();
       const timeoutId = setTimeout(() => controller.abort(), 15000);
 
@@ -64,6 +85,8 @@ const LeadForm = () => {
           phone: formData.phone,
           pincode: formData.pincode,
           monthlyBill: formData.monthlyBill.trim(),
+          district,
+          state,
         }),
       });
       clearTimeout(timeoutId);
